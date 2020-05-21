@@ -74,3 +74,13 @@ class Solution(object):
                 
             
         return np.median(final)
+
+
+# Solution 3 O(n) using python's sort
+import numpy as np
+
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        arr = nums1 + nums2
+        arr.sort()
+        return np.median(arr)
