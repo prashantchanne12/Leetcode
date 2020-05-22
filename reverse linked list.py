@@ -15,10 +15,10 @@ class Solution(object):
         prev = None
         current = head
         while current is not None:
-            n = current.next
+            next = current.next
             current.next = prev
             prev = current
-            current = n
+            current = next
         head = prev
         return head
             
