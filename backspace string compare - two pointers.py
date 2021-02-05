@@ -24,6 +24,7 @@ Input: S = "a#c", T = "b"
 Output: false
 Explanation: S becomes "c" while T becomes "b".
 '''
+# Solution - 1
 
 
 class Solution(object):
@@ -73,3 +74,49 @@ class Solution(object):
             s2_pointer -= 1
 
         return True
+
+# Solution - 2
+
+
+def backspace_string_compare(s, t):
+
+    p1 = len(s)-1
+    p2 = len(t)-1
+
+    while p1 >= 0 or p2 >= 0:
+
+        if s[p1] == '#' or t[p2] == '#':
+
+            if s[p1] == '#':
+                back_count = 2
+
+                while back_count > 0:
+                    p1 -= 1
+                    back_count -= 1
+
+                    if s[p1] == '#':
+                        back_count += 2
+
+            if t[p2] == '#':
+                back_count = 2
+
+                while back_count > 0:
+                    p2 -= 1
+                    back_count -= 1
+
+                    if t[p2] == '#':
+                        back_count += 2
+
+        else:
+
+            if s[p1] != t[p2]:
+                return False
+
+            else:
+                p1 -= 1
+                p2 -= 1
+
+    return True
+
+
+print(backspace_string_compare('abc#', 'abc#'))
