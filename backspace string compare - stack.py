@@ -21,6 +21,8 @@ Explanation: Both S and T become "c".
 
 '''
 
+# Solution - 1
+
 
 class Solution(object):
     def backspaceCompare(self, S, T):
@@ -42,3 +44,27 @@ class Solution(object):
             return ''.join(arr)
 
         return build(S) == build(T)
+
+# Solution - 2
+
+
+def build(string):
+    arr = []
+    for chr in string:
+        if chr == '#' and len(arr) != 0:
+            arr.pop()
+        elif chr != '#':
+            arr.append(chr)
+
+    return arr
+
+
+def typed_out_strings(s, t):
+
+    s_arr = build(s)
+    t_arr = build(t)
+
+    return ''.join(s_arr) == ''.join(t_arr)
+
+
+print(typed_out_strings('##z', '#z'))
