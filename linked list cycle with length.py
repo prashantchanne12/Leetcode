@@ -36,7 +36,6 @@ def cycle_length(slow):
 
     return count
 
-
 def main():
     head = Node(1)
     head.next = Node(2)
