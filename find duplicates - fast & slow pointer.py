@@ -32,15 +32,18 @@ def find_duplicate(nums):
         slow = nums[slow]
         fast = nums[nums[fast]]
 
+        # print(slow, fast)
         if slow == fast:
             break
 
     pointer_1 = nums[0]
     pointer_2 = slow
 
+    # print(pointer_1, pointer_2)
     while pointer_1 != pointer_2:
         pointer_1 = nums[pointer_1]
         pointer_2 = nums[pointer_2]
+        # print(pointer_1, pointer_2)
 
     return pointer_1
 
