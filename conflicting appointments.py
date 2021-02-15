@@ -31,7 +31,7 @@ def can_attend_all_appointments(intervals):
 
         interval = intervals[i]
 
-        if end >= interval[0]:
+        if end > interval[0]:
             return False
         else:
             # update start and end
