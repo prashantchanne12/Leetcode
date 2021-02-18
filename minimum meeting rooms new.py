@@ -48,7 +48,7 @@ def min_meeting_rooms(meetings):
 
         meeting = meetings[i]
 
-        # check if the end time of current meeting is greater than or equal to meeting in the heap
+        # check if the start time of current meeting is greater than or equal to meeting in the heap
         # if true this means they don't overlap and we can use the same meeting room
         if meeting[0] >= rooms_used[0]:
             heapq.heappop(rooms_used)
