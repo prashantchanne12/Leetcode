@@ -1,5 +1,5 @@
 '''
-Find the minimum depth of a binary tree. The minimum depth is the number of nodes along the shortest path from the root node to the nearest leaf node.
+Given a binary tree and a node, find the level order successor of the given node in the tree. The level order successor is the node that appears right after the given node in the level order traversal.
 '''
 
 from collections import deque
@@ -12,29 +12,27 @@ class TreeNode:
         self.val = val
 
 
-def find_minmum_depth(root):
+def find_successor(root, key):
 
     if not root:
         return 0
 
     q = deque()
     q.append(root)
-    min_depth = 0
 
     while q:
-        min_depth += 1
-
         currentNode = q.popleft()
-
-        # check if this is a leaf node
-        if not currentNode.left and not currentNode.right:
-            return min_depth
 
         if currentNode.left:
             q.append(currentNode.left)
 
         if currentNode.right:
             q.append(currentNode.right)
+
+        if currentNode.val == key:
+            break
+
+    return q[0].val if q else None
 
 
 def main():
@@ -43,12 +41,11 @@ def main():
     root.right = TreeNode(1)
 
     root.left.left = TreeNode(9)
-    root.left.right = TreeNode(2)
-
     root.right.left = TreeNode(10)
+
     root.right.right = TreeNode(5)
 
-    print(find_minmum_depth(root))
+    print(find_successor(root, 12))
 
 
 main()
