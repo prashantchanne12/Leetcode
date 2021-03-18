@@ -1,7 +1,7 @@
 '''
 Given a binary tree and a number sequence, find if the sequence is present as a root-to-leaf path in the given tree.
 '''
-
+# Solution - 1
 # sequence - 101 (in the form of integer)
 
 
@@ -46,6 +46,8 @@ def main():
 
 main()
 
+
+# Solution - 2
 # sequence - [1,0,1] (in the form of array)
 
 
