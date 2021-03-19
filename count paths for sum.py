@@ -24,6 +24,7 @@ def count_paths_recursive(current_node, sum, current_path):
     path_count = 0
     path_sum = 0
 
+    # start, end, jump
     for i in range(len(current_path)-1, -1, -1):
         path_sum += current_path[i]
 

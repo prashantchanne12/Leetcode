@@ -23,10 +23,8 @@ def find_numbers(current_node, path, sequence):
     if sequence[len(path)] != current_node.val:
         return False
 
-    # calculate the path number of the current node
     path.append(current_node.val)
 
-    # if the current node is a leaf, return the current path sum
     if current_node.left is None and current_node.right is None:
         return path == sequence
 
