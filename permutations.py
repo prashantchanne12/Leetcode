@@ -17,6 +17,7 @@ Input: nums = [1]
 Output: [[1]]
 '''
 
+# Solution - 1
 
 from collections import deque
 
@@ -50,3 +51,37 @@ class Solution(object):
                         permutations.append(new_permutation)
 
         return res
+
+# Solution - 2 : Backtracking
+
+
+class Permutation:
+
+    def __init__(self):
+        self.res = []
+
+    def find_permutations(self, nums):
+        self.backtrack(nums, [])
+        return self.res
+
+    def backtrack(self, nums, path):
+
+        # base case
+        if not nums:
+            self.res.append(path)
+
+        for i in range(0, len(nums)):
+
+            # get everything before ith index
+            # skip ith index
+            # get everything after ith index
+
+            # path
+            # [1,2,3] append the 1 to path
+            # path [1] and so on
+            self.backtrack(nums[:i] + nums[i+1:], path+[nums[i]])
+
+
+permute = Permutation()
+
+print(permute.find_permutations([1, 2, 3]))
