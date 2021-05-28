@@ -80,3 +80,31 @@ def single_number_3(nums):
 
 
 print(single_number_3([2, 2, 3, 2]))
+
+# Solution - Bit manupalation
+
+
+def single_number_4(nums):
+
+    res = 0
+
+    for i in range(0, 32):
+
+        sum = 0
+
+        for num in nums:
+
+            if (num >> i) & 1 == 1:
+                sum += 1
+
+        sum %= 3
+
+        print(sum)
+
+        if sum != 0:
+            res = res | sum << i
+
+    return res
+
+
+print(single_number_2([2, 2, 3, 2]))
