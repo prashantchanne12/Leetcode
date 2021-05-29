@@ -17,21 +17,25 @@ It's guaranteed that the answer is unique, in other words the set of the top k f
 You can return the answer in any order.
 '''
 
+
 class Solution(object):
     def topKFrequent(self, nums, k):
         dict = {}
         list = []
 
-        for i in nums:
-            if i in dict:
-                dict[i] = dict[i]+1
-            else:
-                dict[i] = 1
+        for num in nums:
+            if num not in dict:
+                dict[num] = 0
 
+            dict[num] += 1
 
         dict = sorted(dict.items(), key=lambda x: x[1])
         print(dict)
 
-        list = [x for x,y in dict[::-1]]
+        list = [x for x, y in dict[::-1]]
 
         return list[:k]
+
+
+s = Solution()
+print(s.topKFrequent([1, 3, 5, 12, 11, 12, 11], 2))
