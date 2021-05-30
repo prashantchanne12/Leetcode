@@ -41,7 +41,6 @@ class Solution(object):
         for k, v in dict.items():
             heappush(max_heap, (-v, k))
 
-        prev = ''
         res = ''
         prev_char = None
         prev_val = 0
@@ -50,7 +49,6 @@ class Solution(object):
             (v, k) = heappop(max_heap)
 
             res += k
-            prev = k
             v = v*-1
 
             if prev_char and -prev_val > 0:
