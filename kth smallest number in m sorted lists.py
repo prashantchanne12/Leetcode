@@ -16,6 +16,8 @@ Explanation: The 3rd smallest number among all the arrays is 7.
 
 from heapq import *
 
+# Solution - 1
+
 
 def find_kth_smallest(lists, k):
 
@@ -33,6 +35,8 @@ def find_kth_smallest(lists, k):
 
 print(find_kth_smallest([[2, 6, 8], [3, 6, 7], [1, 3, 4]], 5))
 print(find_kth_smallest([[5, 8, 9], [1, 7]], 3))
+
+# Solution - 2
 
 
 def find_kth_smallest(lists, k):
