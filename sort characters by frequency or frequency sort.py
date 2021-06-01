@@ -49,4 +49,28 @@ class Solution(object):
 
         return res
 
-# Solution - 2
+# Solution - 2 (Preferred)
+
+
+def frequency_sort(string):
+
+    dict = {}
+    max_heap = []
+
+    for letter in string:
+        if letter not in dict:
+            dict[letter] = 0
+
+        dict[letter] += 1
+
+    for k, v in dict.items():
+        heappush(max_heap, (-v, k))
+
+    res = ''
+
+    while max_heap:
+        freq, char = heappop(max_heap)
+        freq = freq*-1
+        res += char*freq
+
+    return res
