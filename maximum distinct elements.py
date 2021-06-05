@@ -56,7 +56,7 @@ def find_max_distinct(nums, k):
 
         val, key = heappop(min_heap)
 
-        # to make element distinct we need to remove all its occurrences, except 12
+        # to make element distinct we need to remove all its occurrences, except its
         # that's why (val-1)
         k = k - (val - 1)
 
