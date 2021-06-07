@@ -51,3 +51,5 @@ def equal_sum_partition(nums):
 
 print(equal_sum_partition([1, 5, 11, 5]))
 print(equal_sum_partition([1, 40, 11, 5]))
+print(equal_sum_partition([1, 6, 3]))
+print(equal_sum_partition([1, 4, 5]))
