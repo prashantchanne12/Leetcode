@@ -37,7 +37,7 @@ graph = {
 }
 
 
-def bfs(visited, graph, node):
+def bfs(graph, node):
     visited = []
     q = []
 
@@ -56,4 +56,4 @@ def bfs(visited, graph, node):
     return visited
 
 
-print(bfs(visited, graph, 'A'))
+print(bfs(graph, 'A'))
