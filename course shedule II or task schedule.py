@@ -1,3 +1,5 @@
+from collections import deque
+
 
 def is_scheduling_possible(vertices, edges):
 
