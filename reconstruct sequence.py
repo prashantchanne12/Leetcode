@@ -52,13 +52,9 @@ def reconstruct_sequence(oringinal_seq, sequences):
             graph[num] = []
 
     # 2) Built the graph
-    for sequence in sequences:
-        for i in range(0, len(sequence)-1):
-
-            parnet, child = sequence[i], sequence[i+1]
-
-            graph[parnet].append(child)
-            in_degrees[child] += 1
+    for parnet, child in sequences:
+        graph[parnet].append(child)
+        in_degrees[child] += 1
 
     # if we don't have ordering rules for all the numbers we'll not able to uniquely construct the sequence
     if len(in_degrees) != len(oringinal_seq):

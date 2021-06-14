@@ -54,7 +54,6 @@ def minimum_height_tree(nodes, edges):
     while total_nodes > 2:
         leaves_size = len(leaves)
         total_nodes -= leaves_size
-
         for i in range(0, leaves_size):
             node = leaves.popleft()
 
@@ -63,7 +62,6 @@ def minimum_height_tree(nodes, edges):
                 in_degrees[child] -= 1
                 if in_degrees[child] == 1:
                     leaves.append(child)
-
     return list(leaves)
 
 
