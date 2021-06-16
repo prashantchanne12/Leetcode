@@ -12,7 +12,6 @@ def bfs_matrix(arr):
 
     while q and len(values) != len(arr) * len(arr[0]):
         size = len(q)
-
         for i in range(size):
 
             row, col = q.popleft()
