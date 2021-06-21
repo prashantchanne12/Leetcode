@@ -68,3 +68,26 @@ def typed_out_strings(s, t):
 
 
 print(typed_out_strings('##z', '#z'))
+
+
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+
+        string_1 = ''
+        string_2 = ''
+
+        for char in s:
+            if char == '#':
+                if len(string_1) > 0:
+                    string_1 = string_1[:-1]
+            else:
+                string_1 += char
+
+        for char in t:
+            if char == '#':
+                if len(string_2) > 0:
+                    string_2 = string_2[:-1]
+            else:
+                string_2 += char
+
+        return string_1 == string_2
