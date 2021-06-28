@@ -18,38 +18,41 @@ Output: [[1,4], [5,7]]
 Explanation: After insertion, since [1,4] overlaps with [2,3], we merged them into one [1,4].
 '''
 
+# Solution 1
+
+
 def sort_array(intervals):
     arr = []
-    
+
     intervals.sort()
-    
+
     for nums in intervals:
         nums.sort()
-        
+
         arr.append(nums)
-    
-    
+
     return arr
 
+
 def insert(intervals, new_intervals):
-    
+
     intervals.append(new_intervals)
-    
+
     # sort the array
     arr = sort_array(intervals)
-    
-    start = arr[0][0]    
-    end = arr[0][1]    
+
+    start = arr[0][0]
+    end = arr[0][1]
     merged = []
-    
+
     for i in range(1, len(intervals)):
-        
+
         interval = intervals[i]
-        
+
         if interval[0] <= end:
             # merge the overlap array
             end = max(end, interval[1])
-            
+
         else:
             merged.append([start, end])
             # update the start end
@@ -58,9 +61,47 @@ def insert(intervals, new_intervals):
 
     # add the last interval
     merged.append([start, end])
-    
-        
+
     return merged
-    
-    
-print(insert([[1,3], [5,7], [8,12]], [4,6]))
+
+
+print(insert([[1, 3], [5, 7], [8, 12]], [4, 6]))
+
+
+# Solution 2
+
+class Solution(object):
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[List[int]]
+        :type newInterval: List[int]
+        :rtype: List[List[int]]
+        """
+        merged_array = []
+        index = 0
+
+        # skip all the intervals before 'newInterval'
+        while index < len(intervals) and newInterval[0] > intervals[index][1]:
+            merged_array.append(intervals[index])
+            index += 1
+
+        start = newInterval[0]
+        end = newInterval[1]
+
+        for i in range(index, len(intervals)):
+
+            interval = intervals[i]
+
+            if interval[0] <= end:
+                start = min(start, interval[0])
+                end = max(end, interval[1])
+            else:
+
+                merged_array.append([start, end])
+
+                start = interval[0]
+                end = interval[1]
+
+        merged_array.append([start, end])
+
+        return merged_array
