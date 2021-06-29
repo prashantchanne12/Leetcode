@@ -52,8 +52,9 @@ class Solution:
 
             temp = current
 
+            temp = current
             count = 0
-            while temp is not None:
+            while temp is not None and count < k:
                 temp = temp.next
                 count += 1
 
