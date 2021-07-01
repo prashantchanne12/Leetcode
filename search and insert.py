@@ -21,19 +21,40 @@ Input: [1,3,5,6], 0
 Output: 0
 '''
 
+
 class Solution(object):
     def searchInsert(self, nums, target):
         for i in range(len(nums)):
             if target - nums[i] == 0:
                 return i
-            
+
         if target < min(nums):
             return 0
         if target > max(nums):
             return(len(nums))
 
         for i in range(len(nums)-1):
-            if nums[i]< target and nums[i+1] > target:
+            if nums[i] < target and nums[i+1] > target:
                 return i+1
-            
-        
+
+
+# Binary Search - Solution
+
+def search_insert(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+
+        mid = (left + right) // 2
+
+        if target == nums[mid]:
+            return mid
+
+        if target > nums[mid]:
+            left = mid + 1
+
+        else:
+            right = mid - 1
+
+    return left
