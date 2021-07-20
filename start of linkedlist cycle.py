@@ -84,3 +84,42 @@ def main():
 
 
 main()
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+
+class Solution(object):
+
+    def find_start(self, slow, temp):
+        pointer_1 = slow
+        pointer_2 = temp
+
+        while pointer_1 != pointer_2:
+            pointer_1 = pointer_1.next
+            pointer_2 = pointer_2.next
+
+        return pointer_1
+
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+
+        temp = head
+        fast = head
+        slow = head
+
+        while fast is not None and fast.next is not None:
+
+            fast = fast.next.next
+            slow = slow.next
+
+            if fast == slow:
+                return self.find_start(slow, temp)
+
+        return None

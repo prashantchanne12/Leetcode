@@ -105,3 +105,37 @@ class Solution(object):
         merged_array.append([start, end])
 
         return merged_array
+
+# Solution - 3
+
+
+def insert_interval(intervals, new_interval):
+
+    res = []
+    index = 0
+
+    while index < len(intervals) and new_interval[0] > intervals[index][1]:
+        res.append([intervals[index][0], intervals[index][1]])
+        index += 1
+
+    start = new_interval[0]
+    end = new_interval[1]
+
+    for i in range(index, len(intervals)):
+
+        interval = intervals[i]
+
+        if interval[0] <= end:
+
+            start = min(start, interval[0])
+            end = max(end, interval[1])
+
+        else:
+            res.append([start, end])
+
+            start = interval[0]
+            end = interval[1]
+
+    res.append([start, end])
+
+    return res
