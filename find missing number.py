@@ -5,6 +5,7 @@ Example 1:
 
 Input: [4, 0, 3, 1]
 Output: 2
+
 Example 2:
 
 Input: [8, 3, 5, 2, 4, 6, 0, 1]
@@ -13,25 +14,20 @@ Output: 7
 
 
 def find_missing_number(nums):
-
-    i = 0
     n = len(nums)
 
-    while i < n:
-        j = nums[i]
+    # Place each number at its correct index if possible
+    for i in range(n):
+        # Keep swapping until nums[i] is either out of range or at the correct position
+        while nums[i] < n and nums[i] != nums[nums[i]]:
+            # Swap nums[i] with nums[nums[i]] to move the number to its correct position
+            nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
 
-        if nums[i] < n and nums[i] != nums[j]:
-            # swap
-            nums[i], nums[j] = nums[j], nums[i]
-        else:
-            i += 1
-
-    # find the first number missing from its index, that will be our required number
+    # After the above sorting process, find the first index where the number is incorrect
     for i in range(n):
         if nums[i] != i:
-            return i
+            return i  # This index is where the missing number should be
 
-    return n
-
+    return n  # If all numbers are in their correct place, return n as the missing number
 
 print(find_missing_number([4, 0, 3, 1]))
