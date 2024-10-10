@@ -12,22 +12,17 @@ Input: [8, 3, 5, 2, 4, 6, 0, 1]
 Output: 7
 '''
 
-
 def find_missing_number(nums):
     n = len(nums)
-
-    # Place each number at its correct index if possible
+    
     for i in range(n):
-        # Keep swapping until nums[i] is either out of range or at the correct position
         while nums[i] < n and nums[i] != nums[nums[i]]:
-            # Swap nums[i] with nums[nums[i]] to move the number to its correct position
             nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
 
-    # After the above sorting process, find the first index where the number is incorrect
     for i in range(n):
         if nums[i] != i:
-            return i  # This index is where the missing number should be
+            return i
 
-    return n  # If all numbers are in their correct place, return n as the missing number
+    return n
 
 print(find_missing_number([4, 0, 3, 1]))
