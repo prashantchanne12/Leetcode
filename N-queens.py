@@ -72,3 +72,41 @@ print(n_queen(board, 0, n))
 
 for row in board:
     print(row)
+
+
+# Solution - 2
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        col = set()
+        positive_diagonals = set() # (r + c)
+        negative_diagonals = set() # (r - c)
+
+        res = []
+        board = [["."] * n for i in range(n)]
+
+        def backtrack(r):
+            if r == n:
+                copy = ["".join(row) for row in board]
+                res.append(copy)
+                return 
+
+            for c in range(n):
+                if c in col or (r + c) in positive_diagonals or (r - c) in negative_diagonals:
+                    continue 
+
+                col.add(c)
+                positive_diagonals.add(r + c)
+                negative_diagonals.add(r - c)
+                board[r][c] = "Q"
+
+                backtrack(r + 1)
+
+                col.remove(c)
+                positive_diagonals.remove(r + c)
+                negative_diagonals.remove(r - c)
+                board[r][c] = "."
+
+        backtrack(0)
+        return res
+
+        
