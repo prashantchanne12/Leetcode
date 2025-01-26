@@ -40,3 +40,16 @@ def max_sum_subarray(nums):
 
 
 print(max_sum_subarray([5, -4, -2, 6, -1]))
+
+
+# Solution 3 - DP
+# Time complexity: O(n)
+# Space complexity: O(n)
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:            
+        res = [0]*(len(nums)+1)
+        
+        for i in range(1, len(nums)+1):
+            res[i] = max(res[i-1] + nums[i-1], nums[i-1])
+            
+        return max(res[1:])
