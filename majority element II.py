@@ -74,3 +74,36 @@ class Solution(object):
             res.append(num_2)
 
         return res
+
+# Solution 2
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+
+        dict = {}
+
+        for num in nums:
+            if num not in dict:
+                dict[num] = 0
+
+            dict[num] += 1
+
+            if len(dict) <= 2:
+                continue
+
+            new_dict = {}
+            for key, val in dict.items():
+                if val > 1:
+                    new_dict[key] = val - 1
+
+            dict = new_dict
+
+        
+        res = []
+
+        for num in dict:
+            if nums.count(num) > len(nums) // 3:
+                res.append(num)
+
+        return res
+        
