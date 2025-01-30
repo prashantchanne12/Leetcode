@@ -75,3 +75,30 @@ def find_permutation(str, pattern):
 
 
 print(find_permutation('oidbcaf', 'abc'))
+
+# Solution 2
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        window_end = 0
+        window_start = 0
+        s1_counter = [0]*26
+        s2_counter = [0]*26
+        k = len(s1)
+
+        for char in s1:
+            s1_counter[ord(char) - ord('a')] += 1
+
+        while window_end < len(s2):
+            s2_counter[ord(s2[window_end]) - ord('a')] += 1
+
+            if window_end - window_start + 1 == k:
+                if s1_counter == s2_counter:
+                    return True
+
+            if window_end - window_start + 1 >= k:
+                s2_counter[ord(s2[window_start]) - ord('a')] -= 1
+                window_start += 1
+
+            window_end += 1
+
+        return False
