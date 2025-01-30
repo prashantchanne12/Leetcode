@@ -35,7 +35,7 @@ class Solution:
             word1, word2 = words[i], words[i+1]
 
             for j in range(0, len(word1)):
-                if j == len(word2): # word2 is bigger [he, hello]
+                if j == len(word2): # word1 is bigger [hello, he]
                     return False
 
                 # Look for first different character
