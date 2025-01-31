@@ -52,3 +52,25 @@ class Solution(object):
                 current += p  # . .. a, b, etc.
 
         return '/' + '/'.join(stack)
+
+# Solution 2
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        splitted_path = path.split("/")
+        stack = []
+        res = ""
+        
+        for string in splitted_path:
+            if string == "" or string == ".":
+                continue
+            
+            if string == "..":
+                if stack:
+                    stack.pop()
+                continue
+            
+            stack.append(string)
+        
+        return '/' + '/'.join(stack) 
+
+
